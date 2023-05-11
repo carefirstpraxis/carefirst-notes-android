@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable(route = Screens.Dashboard) {
-                            DashBoardScreen(navController = navController)
+                            DashBoardScreen(navController = navController, app = application)
                         }
                     }
                 }
