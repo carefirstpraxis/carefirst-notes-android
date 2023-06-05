@@ -119,7 +119,7 @@ fun LoginScreen(navController: NavHostController) {
     verticalArrangement = Arrangement.Center,
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
-    Text(text = "Communicator", style = TextStyle(fontSize = 40.sp))
+    Text(text = "CareFirst Notes", style = TextStyle(fontSize = 40.sp))
     Spacer(modifier = Modifier.size(40.dp))
     Image(
       painter = painterResource(id = R.drawable.app_icon),
