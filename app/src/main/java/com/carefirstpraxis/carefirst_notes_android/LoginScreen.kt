@@ -69,7 +69,7 @@ fun LoginScreen(navController: NavHostController) {
   }
 
   fun login() {
-    var url = "http://192.168.86.29:8080/cfpm/app/"
+    var url = "http://192.168.86.250:8080/cfpm/app/login/"
     val retrofit =
       Retrofit.Builder()
         .baseUrl(url)
@@ -79,7 +79,7 @@ fun LoginScreen(navController: NavHostController) {
     val retrofitAPI = retrofit.create(RetrofitAPI::class.java)
     val loginUser = LoginUser(username.value.text, password.value.text, "", "")
     val dataModel = DataModel(loginUser)
-    val call: Call<DataModel?>? = retrofitAPI.postData(dataModel)
+    val call: Call<DataModel?>? = retrofitAPI.login(dataModel)
 
     call!!.enqueue(object : Callback<DataModel?> {
       override fun onResponse(call: Call<DataModel?>?, response: Response<DataModel?>) {

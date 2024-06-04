@@ -5,9 +5,8 @@ data class DataModel(
 )
 
 data class LoginUser (
-  @SerializedName("username"   ) var username   : String? = null,
-  @SerializedName("password"   ) var password   : String? = null,
-  @SerializedName("clientType" ) var clientType : String? = null,
-  @SerializedName("module"     ) var module     : String? = null
-
+  @SerializedName("username") var username   : String? = null,
+  @SerializedName("password") var password   : String? = null,
+  @SerializedName("clientType") var clientType : String? = null,
+  @SerializedName("module") var module     : String? = null
 )
