@@ -13,6 +13,6 @@ interface RetrofitAPI {
   @POST("login")
   @FormUrlEncoded
   fun login(
-    @Field("data") data: DataModel
+    @Field("data") data: String
   ): Call<DataModel?>?
 }
