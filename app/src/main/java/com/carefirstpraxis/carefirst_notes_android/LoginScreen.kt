@@ -1,7 +1,6 @@
 package com.carefirstpraxis.carefirst_notes_android
 
 import DataModel
-import LoginUser
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -79,7 +78,12 @@ fun LoginScreen(navController: NavHostController) {
       override fun onResponse(call: Call<DataModel?>?, response: Response<DataModel?>) {
         Log.d("LOG RESPONSE:", response.code().toString())
         Log.d("LOG RESPONSE BODY:", response.body().toString())
-        navController.navigate(Routes.Dashboard.route)
+        if (response.body()?.client?.authStatus == 1) {
+          navController.navigate(Routes.Dashboard.route)
+        }
+        else {
+          submitError.value = "Invalid Login"
+        }
       }
 
       override fun onFailure(call: Call<DataModel?>?, t: Throwable) {
