@@ -74,10 +74,7 @@ fun LoginScreen(navController: NavHostController) {
         .build()
 
     val retrofitAPI = retrofit.create(RetrofitAPI::class.java)
-    val loginUser = LoginUser(username.value.text, password.value.text, "", "")
-    val dataModel = DataModel(loginUser)
-    val call: Call<DataModel?>? = retrofitAPI.login("{\"username\":dora,\"password\":Njs2101$,\"clientType\":user,\"module\":pm}")
-
+    val call: Call<DataModel?>? = retrofitAPI.login("{\"username\":${username.value.text},\"password\":${password.value.text},\"clientType\":\"user\",\"module\":\"pm\"}")
     call!!.enqueue(object : Callback<DataModel?> {
       override fun onResponse(call: Call<DataModel?>?, response: Response<DataModel?>) {
         Log.d("LOG RESPONSE:", response.code().toString())
