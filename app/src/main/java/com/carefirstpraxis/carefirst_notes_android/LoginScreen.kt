@@ -2,7 +2,6 @@ package com.carefirstpraxis.carefirst_notes_android
 
 import DataModel
 import LoginUser
-import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,7 +24,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,7 +37,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
@@ -69,7 +66,7 @@ fun LoginScreen(navController: NavHostController) {
   }
 
   fun login() {
-    var url = "http://192.168.86.29:8080/cfpm/app/"
+    var url = "http://192.168.86.250:8080/cfpm/app/"
     val retrofit =
       Retrofit.Builder()
         .baseUrl(url)
@@ -79,7 +76,7 @@ fun LoginScreen(navController: NavHostController) {
     val retrofitAPI = retrofit.create(RetrofitAPI::class.java)
     val loginUser = LoginUser(username.value.text, password.value.text, "", "")
     val dataModel = DataModel(loginUser)
-    val call: Call<DataModel?>? = retrofitAPI.postData(dataModel)
+    val call: Call<DataModel?>? = retrofitAPI.login(dataModel)
 
     call!!.enqueue(object : Callback<DataModel?> {
       override fun onResponse(call: Call<DataModel?>?, response: Response<DataModel?>) {
